@@ -1,0 +1,21 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@font-face {
+  font-family: "EkkamaiNew";
+  src: local("EkkamaiNew"),
+    url(./font/EkkamaiNew/EkkamaiNew-Bold.ttf) format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "EkkamaiNew";
+}
+
+.global-font {
+  font-family: "EkkamaiNew";
+  font-size: larger;
+  font-weight: 1000;
+}
