@@ -21,20 +21,17 @@ const DUM_IMG =
 const hot = true;
 const out = !true;
 
-// const [menuCardStatus,setMenuCardStatus] = useState<boolean>(false);
-
-const menuClick = () => {
-  console.log("menu click");
-  //toggle
-  // setMenuCardStatus(!menuCardStatus)
-};
-
-  
-
 export default function ListMenuItem() {
+  const [menuCardStatus, setMenuCardStatus] = useState<boolean>(false);
+
+  const menuClick = () => {
+    console.log("menu click");
+    //toggle
+    setMenuCardStatus(!menuCardStatus);
+  };
+
   return (
     <>
-    
       <div style={{ padding: "10px", width: "500px", position: "relative" }}>
         <CardActionArea onClick={menuClick}>
           <img
@@ -76,7 +73,6 @@ export default function ListMenuItem() {
           />
         ) : null}
       </div>
-          
     </>
   );
 }
