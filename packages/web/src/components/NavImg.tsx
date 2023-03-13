@@ -1,7 +1,7 @@
 import React from "react";
 
 interface NavImgProp {
-  coverImg: string;
+  coverImg?: string;
 }
 
 const NavImg: React.FC<NavImgProp> = (props: NavImgProp) => {
