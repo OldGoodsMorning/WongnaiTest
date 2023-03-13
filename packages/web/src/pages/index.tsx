@@ -1,4 +1,4 @@
-import { Button, Card, Grid } from "@mui/material";
+import { Button, Card, Chip, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import NavImg from "../components/NavImg";
 import ListMenuItem from "../components/ListMenuItem";
@@ -81,9 +81,8 @@ const HomePage = () => {
               //check time
             Number(restaurant?.activeTimePeriod.close.split(':')![0])*60 + Number(restaurant?.activeTimePeriod.close.split(':')![1]) > Number(now.getHours())*60 + now.getMinutes() &&
             Number(restaurant?.activeTimePeriod.open.split(':')![0])*60 + Number(restaurant?.activeTimePeriod.open.split(':')![1]) <= Number(now.getHours())*60 + now.getMinutes() ?
-            // true ?
-             <h5 style={{color:'gray' ,paddingLeft : '10px'}}>(open)</h5> :
-             <h5 style={{color:'gray' ,paddingLeft : '10px'}}>(close)</h5>
+            <Chip label='open' style={{margin:'10px'}}/>:
+            <Chip label='close' style={{margin:'10px'}}/>
             }  
             </div>
           </div>
@@ -95,7 +94,7 @@ const HomePage = () => {
         <div style={{ overflow: "auto", display: "flex" }}>
           {shortMenuItems.map((item, index) => {
             // console.log(item);
-            return <ListMenuItem {...item} key={index} />;
+            return <ListMenuItem menuItem={item} restaurantID={restaurantId[selectedRestaurant]} key={index} />;
           })}
         </div>
       </Card>

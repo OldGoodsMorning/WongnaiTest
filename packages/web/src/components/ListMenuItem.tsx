@@ -10,18 +10,21 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { ShortMenuModel } from "../models/short_menu_model";
+import { useNavigate } from "react-router-dom";
 
 
+interface listMenuItemProp {
+  menuItem : ShortMenuModel,
+  restaurantID : string
+}
 
-const hot = true;
+export default function ListMenuItem(props:listMenuItemProp) {
 
-export default function ListMenuItem(props:ShortMenuModel) {
-
+  const navigate = useNavigate();
 
   const menuClick = () => {
-    console.log(`${props.name} click`);
-    //toggle
-    // console.log(props);
+    // console.log(`${props.menuItem.name} click`);
+    navigate(`/menu/${props.restaurantID}/${props.menuItem.name}`);
   };
 
   return (
@@ -31,17 +34,17 @@ export default function ListMenuItem(props:ShortMenuModel) {
           <img
             height="245"
             width="245"
-            src={props.thumbnailImage}
+            src={props.menuItem.thumbnailImage}
             style={{ objectFit: "cover" }}
           />
           <CardContent>
-            <h2>{props.name}</h2>
+            <h2>{props.menuItem.name}</h2>
             {/* <h4>{DUM_DES}</h4> */}
-            <h4>{props.fullPrice} บาท</h4>
+            <h4>{props.menuItem.fullPrice} บาท</h4>
           </CardContent>
         </CardActionArea>
 
-        {props.totalInStock === 0 ? (
+        {props.menuItem.totalInStock === 0 ? (
           <img
             src="https://www.freeiconspng.com/thumbs/stop-icon/stop-icon-21.png"
             width="50"
@@ -54,7 +57,7 @@ export default function ListMenuItem(props:ShortMenuModel) {
           />
         ) : null}
 
-        {props.discountedPercent > 0 || props.name.includes('Promotion') ? (
+        {props.menuItem.discountedPercent > 0 || props.menuItem.name.includes('Promotion') ? (
           <img
             src="https://cdn-icons-png.flaticon.com/512/3655/3655418.png"
             width="50"

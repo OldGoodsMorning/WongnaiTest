@@ -1,6 +1,7 @@
 import HomePage from "./pages";
 
 import { Navigate, Routes, BrowserRouter, Route } from "react-router-dom";
+import MenuPage from "./pages/menu";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path={"/"} element={<HomePage />}></Route>
+          <Route path={"/menu/:restaurantID/:menuID"} element={<MenuPage />}></Route>
         </Routes>
       </BrowserRouter>
     </>

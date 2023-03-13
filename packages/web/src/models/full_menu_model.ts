@@ -13,7 +13,7 @@ export interface FullMenuModel {
     sold : number;
     totalInStock : number;
     largeImage ?: string;
-    option : {
+    options : {
         label : string;
         choices : {
             label :string;
