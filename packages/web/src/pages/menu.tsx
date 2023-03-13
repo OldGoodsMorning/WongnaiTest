@@ -27,6 +27,17 @@ const MenuPage = () => {
       });
   };
 
+  const checkDiscount = () => {
+    const end = fullMenu?.discountedTimePeriod?.end.split(":")
+    const begin = fullMenu?.discountedTimePeriod?.begin.split(":")
+    const current = Number(now.getHours()) * 60 + now.getMinutes()
+    return (
+      Number(fullMenu?.discountPercent) > 0 &&
+      Number(end![0]) * 60 + Number(end![1]) > current &&
+      Number(begin![0]) * 60 + Number(begin![1]) < current
+    );
+  };
+
   return (
     <>
       <Grid container justifyContent="center">
@@ -59,12 +70,7 @@ const MenuPage = () => {
             <div style={{ display: "flex" }}>
               <h3>ราคา : {fullMenu?.fullPrice} บาท</h3>
 
-              
-              { 
-                //check discount
-                Number(fullMenu?.discountPercent) > 0 &&
-                Number(fullMenu?.discountedTimePeriod?.end.split(":")![0]) * 60 +Number(fullMenu?.discountedTimePeriod?.end.split(":")![1]) > Number(now.getHours()) * 60 + now.getMinutes() &&
-                Number(fullMenu?.discountedTimePeriod?.begin.split(":")![0]) *60 + Number(fullMenu?.discountedTimePeriod?.begin.split(":")![1]) <=Number(now.getHours()) * 60 + now.getMinutes() ? (
+              {checkDiscount() ? (
                 <h3 style={{ color: "red", marginLeft: "10px" }}>
                   ลด {fullMenu?.discountPercent}%
                 </h3>
